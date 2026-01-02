@@ -25,7 +25,7 @@ git push -u origin main
 #### 2️⃣ Deploy on Render.com
 
 1. Go to [https://render.com](https://render.com) and sign up/log in
-2. Click **"New +"** → **"Web Service"**
+2. Click **"New +\"** → **"Background Worker"** (NOT "Web Service"!)
 3. Connect your GitHub account (if not already connected)
 4. Select your repository
 5. Render will auto-detect the settings from `render.yaml`
@@ -34,12 +34,14 @@ git push -u origin main
 
 In the Render dashboard:
 - Find **"Environment Variables"** section
-- Add: `BOT_TOKEN` = `8285555737:AAG0jX5oSSD4b-2tcuPsNjqUIQ-rmnjqZXA`
+- Add: `BOT_TOKEN` = `YOUR_ACTUAL_BOT_TOKEN_FROM_BOTFATHER`
+- **⚠️ IMPORTANT:** Get your CURRENT token from @BotFather (send `/token` command)
+- **NEVER** hardcode your token in files or commit it to GitHub!
 - Click **"Save Changes"**
 
 #### 4️⃣ Deploy!
 
-- Click **"Create Web Service"**
+- Click **"Create Background Worker"**
 - Wait 2-3 minutes for deployment
 - Your bot will be online 24/7! 🎉
 
@@ -49,9 +51,10 @@ In the Render dashboard:
 
 ✅ Moved bot token to environment variables (more secure)  
 ✅ Added `dotenv` package for local development  
-✅ Created `render.yaml` for automatic Render deployment  
+✅ Created `render.yaml` for automatic Render deployment (as Background Worker)  
 ✅ Created `.gitignore` to protect sensitive files  
 ✅ Created `.env.example` as a reference template  
+✅ **Fixed: Changed service type from "web" to "worker" for polling bots**  
 
 ---
 
@@ -72,13 +75,22 @@ npm start
 ## 🆘 Troubleshooting
 
 **Bot goes offline?**
+- ⚠️ **IMPORTANT**: Use "Background Worker" not "Web Service"! Polling bots need worker type.
 - Check Render dashboard for errors
 - Make sure BOT_TOKEN is set correctly
 - Free tier services may restart occasionally
+- Ensure you deployed as Background Worker (not Web Service)
+
+**Token issues?**
+- If BotFather regenerated your token, update it in Render's Environment Variables
+- Go to Render Dashboard → Your Service → Environment → Edit BOT_TOKEN
+- After updating, your service will automatically restart with the new token
+- **Never** commit tokens to GitHub - they should only be in Environment Variables!
 
 **409 Conflict error?**
 - Stop any other instances of your bot
 - Only run ONE instance at a time
+- Check if you have the bot running locally or on another service
 
 ---
 
