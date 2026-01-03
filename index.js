@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const http = require('http');
 require('dotenv').config();
 
 const token = process.env.BOT_TOKEN;
@@ -6,6 +7,18 @@ if (!token) {
   console.error('Missing BOT_TOKEN environment variable');
   process.exit(1);
 }
+
+// Create a simple HTTP server for Glitch to detect the app is running
+// This prevents Glitch from putting your bot to sleep
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Telegram Bot is running! 🤖\n');
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`✅ Keep-alive server running on port ${PORT}`);
+});
 
 const bot = new TelegramBot(token, { polling: true });
 
