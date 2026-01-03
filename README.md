@@ -11,12 +11,20 @@ A Telegram bot that manages airdrops and game links for Time2bet.
 
 ## 🚀 Deployment Options
 
-### ✅ **Glitch.com (RECOMMENDED - 100% FREE)**
+### ✅ **Replit (RECOMMENDED - 100% FREE)**
 - **No credit card required**
-- **Easiest setup** - Import from GitHub
-- **Free forever** - No trials or limits
+- **Best online editor** - Code in your browser
+- **Easy setup** - Import from GitHub in 1 click
+- **Mobile app available** - Edit from your phone
 
-👉 **[Follow Glitch Deployment Guide](DEPLOY_TO_GLITCH.md)**
+👉 **[Follow Replit Deployment Guide](DEPLOY_TO_REPLIT.md)**
+
+---
+
+### ✅ **Glitch.com (Alternative - 100% FREE)**
+- **No credit card required**
+- **Quick setup** - Import from GitHub
+- See [DEPLOY_TO_GLITCH.md](DEPLOY_TO_GLITCH.md)
 
 ---
 

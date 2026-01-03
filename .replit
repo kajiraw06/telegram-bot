@@ -1,0 +1,16 @@
+run = "node index.js"
+entrypoint = "index.js"
+modules = ["nodejs-20:v8-20230920-bd784b9"]
+
+hidden = [".config", ".git", ".gitignore"]
+
+[nix]
+channel = "stable-23_05"
+
+[deployment]
+run = ["node", "index.js"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
